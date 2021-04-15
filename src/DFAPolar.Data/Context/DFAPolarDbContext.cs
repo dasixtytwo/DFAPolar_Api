@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DFAPolar.Domain.Models;
 using System.Linq;
+using System;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DFAPolar.Data.Context
 {
-    public class DFAPolarDbContext : DbContext
+    public class DFAPolarDbContext : DbContext, IDFAPolarDbContext
     {
-        public DFAPolarDbContext() { }
-
-        public DFAPolarDbContext(DbContextOptions<DFAPolarDbContext> opts) : base(opts) { }
+        public DFAPolarDbContext(DbContextOptions<DFAPolarDbContext> opts) 
+            : base(opts) { }
 
         // Defining DbSet
         public DbSet<UserModel> Users { get; set; }
